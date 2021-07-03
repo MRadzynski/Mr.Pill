@@ -1,7 +1,9 @@
 import React from 'react';
 
-import SignIn from './components/signIn/signIn.component';
-import SignUp from './components/signUp/signUp.component';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import SignIn from './pages/signIn/signIn.component';
+import SignUp from './pages/signUp/signUp.component';
 
 import GlobalStyle from './globalStyles';
 
@@ -9,8 +11,16 @@ function App() {
   return (
     <>
     <GlobalStyle/>
-    {/* <SignIn/> */}
-    <SignUp/>
+    <Router>
+      <Switch>
+        <Route path='/signin'>
+          <SignIn/>
+        </Route>
+        <Route path='/signup'>
+          <SignUp/>
+        </Route>
+      </Switch>
+    </Router>
     </>
   );
 }

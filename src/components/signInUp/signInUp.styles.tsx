@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const SignInContainer = styled.div`
+export const SignInUpContainer = styled.div`
   width: 100vw;
   height: calc(var(--vh, 1vh) * 100);
   display: grid;
@@ -13,7 +14,7 @@ export const SignInContainer = styled.div`
     '.     footer    .';
 `;
 
-export const SignInTitle = styled.h1`
+export const SignInUpTitle = styled.h1`
   grid-area: title;
   place-self: center;
   color: white;
@@ -32,7 +33,7 @@ export const LogoContainer = styled.div`
   }
 `;
 
-export const SignInForm = styled.form`
+export const SignInUpForm = styled.form`
   width: 70vw;
   margin: 0 auto;
   grid-area: form;
@@ -51,10 +52,19 @@ export const FormInput = styled.input`
   line-height: 2.2rem;
   background-color: var(--primary-color);
   color: white;
+  caret-color: white;
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover, 
+  &:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    background-clip: content-box !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
 
   &::placeholder {
     color: white;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     letter-spacing: 0.15rem;
   }
 
@@ -74,6 +84,14 @@ export const ForgotPassword = styled.p`
     text-shadow: 0 2px 2px rgba(0,0,0,0.15);
     cursor: pointer;
 `
+
+export const ErrorMessageContainer = styled.span`
+  margin: -0.5rem 0;
+  color: #ff3333;
+  font-weight: bold;
+  text-align: center;
+  display: none;
+`;
 
 export const CustomButton = styled.button`
   width: 50vw;
@@ -106,4 +124,11 @@ export const SubText = styled.footer`
   font-size: 1.2rem;
   text-align:center;
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+`;
+
+export const SignInUpLink = styled(Link)`
+  color: #fabd42;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: underline;
 `;

@@ -1,31 +1,34 @@
 import React from 'react';
 
 import {
-  SignInContainer,
-  SignInTitle,
+  SignInUpContainer,
+  SignInUpTitle,
   LogoContainer,
-  SignInForm,
+  SignInUpForm,
   FormInput,
   ForgotPassword,
+  ErrorMessageContainer,
   CustomButton,
   SubText,
-} from './signIn.styles';
+  SignInUpLink
+} from '../../components/signInUp/signInUp.styles';
 
 const SignIn = () => (
-  <SignInContainer>
-    <SignInTitle>Mr.Pill</SignInTitle>
+  <SignInUpContainer>
+    <SignInUpTitle>Mr.Pill</SignInUpTitle>
     <LogoContainer>
       <img src="/assets/logo xl.png" alt="Pills" />
     </LogoContainer>
-    <SignInForm onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
+    <SignInUpForm onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
         <FormInput type='email' placeholder='Email' required/>
         <FormInput type='password' placeholder='Password' required/>
         <ForgotPassword>Forgot password?</ForgotPassword>
+        <ErrorMessageContainer>Incorrect email or password!</ErrorMessageContainer>
         <CustomButton>Sign In!</CustomButton>
         <CustomButton>Sign In with Google!</CustomButton>
-    </SignInForm>
-    <SubText>Don't have an account? Sign Up!</SubText>
-  </SignInContainer>
+    </SignInUpForm>
+    <SubText>Don't have an account? <SignInUpLink to='/signup'>Sign Up!</SignInUpLink></SubText>
+  </SignInUpContainer>
 );
 
 export default SignIn;

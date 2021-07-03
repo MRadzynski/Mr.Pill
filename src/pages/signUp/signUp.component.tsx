@@ -1,31 +1,33 @@
 import React from 'react';
 
 import {
-    SignInContainer,
-    SignInTitle,
+    SignInUpContainer,
+    SignInUpTitle,
     LogoContainer,
-    SignInForm,
+    SignInUpForm,
     FormInput,
-    ForgotPassword,
+    ErrorMessageContainer,    
     CustomButton,
-    SubText,
-  } from '../signIn/signIn.styles';
+    SubText,   
+    SignInUpLink
+  } from '../../components/signInUp/signInUp.styles';
 
 const SignUp = () => (
-    <SignInContainer>
-    <SignInTitle>Mr.Pill</SignInTitle>
+    <SignInUpContainer>
+    <SignInUpTitle>Mr.Pill</SignInUpTitle>
     <LogoContainer>
       <img src="/assets/logo xl.png" alt="Pills" />
     </LogoContainer>
-    <SignInForm onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
+    <SignInUpForm onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
         <FormInput type='email' placeholder='Display Name (optional)' required/>
         <FormInput type='email' placeholder='Email' required/>
         <FormInput type='password' placeholder='Password' required/>
         <FormInput type='password' placeholder='Confirm Password' required/>
+        <ErrorMessageContainer>Passwords don't match!</ErrorMessageContainer>
         <CustomButton>Sign Up!</CustomButton>
-    </SignInForm>
-    <SubText>Already have an account? Sign In!</SubText>
-  </SignInContainer>
+    </SignInUpForm>
+    <SubText>Already have an account? <SignInUpLink to='/signin'>Sign In!</SignInUpLink></SubText>
+  </SignInUpContainer>
 );
 
 export default SignUp;
