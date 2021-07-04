@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+interface SignInInterface {
+  isGoogle?: boolean;
+}
+
 export const SignInUpContainer = styled.div`
   width: 100vw;
   height: calc(var(--vh, 1vh) * 100);
@@ -93,7 +97,7 @@ export const ErrorMessageContainer = styled.span`
   display: none;
 `;
 
-export const CustomButton = styled.button`
+export const CustomButton = styled.button<SignInInterface>`
   width: 50vw;
   height: 3rem;
   margin-bottom: 1rem;
