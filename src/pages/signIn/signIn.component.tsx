@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
-import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
+import { signInWithGoogle } from '../../firebase/firebase.utils';
+
+import { useAuth } from '../../contexts/AuthContext';
 
 import {
   SignInUpContainer,
@@ -21,6 +23,9 @@ const SignIn = () => {
     password: '',
   });
 
+  console.log(useAuth());
+   const { signIn } = useAuth()!;
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
@@ -31,7 +36,7 @@ const SignIn = () => {
     e.preventDefault();
     const { email, password } = userCredentials;
 
-    auth.signInWithEmailAndPassword(email, password);
+    signIn(email,password);
   };
 
   return (
