@@ -13,6 +13,21 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+interface additionalData {
+    displayName?: string | null | undefined;
+}
+
+export const createUserDocument = (userAuth: firebase.User | null , additionalData: additionalData) => {
+    if(userAuth) {
+        console.log(additionalData);
+        const date = new Date();
+        const { uid, email } = userAuth;
+        const displayName = additionalData?.displayName;
+
+        firebase.firestore().collection('users').doc(uid).set({createdAt: date, email, displayName });
+    }
+}
+
 
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({prompt: 'select_account'});

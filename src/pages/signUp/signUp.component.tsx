@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import {auth} from '../../firebase/firebase.utils';
+import { useAuth } from '../../contexts/AuthContext';
 
 import {
   SignInUpContainer,
@@ -22,6 +22,8 @@ const SignUp = () => {
     confirmPassword: '',
   });
 
+  const { signUp } = useAuth()!;
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
@@ -32,13 +34,12 @@ const SignUp = () => {
     e.preventDefault();
 
     const {email, password, confirmPassword} = userCredentials;
-
-    console.log(email);
+    
     if(password !== confirmPassword){
       console.error(`Passwords don't match`);
     }
 
-    auth.createUserWithEmailAndPassword(email, password);
+    signUp(email, password, userCredentials.displayName);
   };
 
   return (
@@ -79,7 +80,7 @@ const SignUp = () => {
         <CustomButton>Sign Up!</CustomButton>
       </SignInUpForm>
       <SubText>
-        Already have an account?{' '}
+        Already have an account?
         <SignInUpLink to="/signin">Sign In!</SignInUpLink>
       </SubText>
     </SignInUpContainer>
