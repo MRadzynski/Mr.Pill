@@ -59,7 +59,7 @@ export const FormInput = styled.input`
   caret-color: white;
 
   &:-webkit-autofill,
-  &:-webkit-autofill:hover, 
+  &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
     -webkit-text-fill-color: white;
     background-clip: content-box !important;
@@ -72,29 +72,38 @@ export const FormInput = styled.input`
     letter-spacing: 0.15rem;
   }
 
-  &[type="password"]{
-      letter-spacing: 0.5rem;
+  &[type='password'] {
+    letter-spacing: 0.5rem;
   }
 `;
 
 export const ForgotPassword = styled.p`
-    position: relative;
-    top: -1rem;
-    text-align: right;
-    text-decoration: underline;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color:#fabd42;
-    text-shadow: 0 2px 2px rgba(0,0,0,0.15);
-    cursor: pointer;
-`
+  position: relative;
+  top: -1rem;
+  text-align: right;
+  text-decoration: underline;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fabd42;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+`;
 
 export const ErrorMessageContainer = styled.span`
-  margin: -0.5rem 0;
+  margin: -0.5rem auto;
   color: #ff3333;
   font-weight: bold;
-  text-align: center;
-  display: none;
+  text-align:center;
+  display: flex;
+`;
+
+export const SuccessMessageContainer = styled.span`
+  margin: -0.5rem auto;
+  margin: -0.5rem auto 1rem auto;
+  color: #18938d;
+  font-weight: bold;
+  text-align:center;
+  display: flex;
 `;
 
 export const CustomButton = styled.button<SignInInterface>`
@@ -109,8 +118,8 @@ export const CustomButton = styled.button<SignInInterface>`
   font-size: 1.2rem;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
   :first-of-type {
     margin-top: 1rem;
   }
@@ -126,8 +135,15 @@ export const SubText = styled.footer`
   place-self: center;
   color: white;
   font-size: 1.2rem;
-  text-align:center;
+  text-align: center;
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+`;
+
+export const SubTitle = styled.h3`
+  margin-bottom: 1.5rem;
+  color: white;
+  text-align:center;
+  text-shadow: 0 4px 4px rgba(0,0,0,0.25);
 `;
 
 export const SignInUpLink = styled(Link)`
