@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-import { auth, createUserDocument } from '../firebase/firebase.utils';
+import { auth, createUserDocument, passwordResetEmail } from '../firebase/firebase.utils';
 
 interface CurrentUser {
   id: string | undefined;
@@ -16,6 +16,7 @@ interface AuthInterface {
     displayName: string
   ) => Promise<void>;
   signIn: (email: string, password: string) => Promise<Object>;
+  resetPassword: (email: string) => Promise <void>;
 }
 
 export const AuthContext = createContext<AuthInterface | null>(null);
@@ -36,6 +37,8 @@ export const AuthProvider: React.FC = ({ children }) => {
   const signIn = (email: string, password: string) =>
     auth.signInWithEmailAndPassword(email, password);
 
+  const resetPassword = (email: string) => passwordResetEmail(email);
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       const id = user?.uid;
@@ -52,6 +55,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     currentUser,
     signUp,
     signIn,
+    resetPassword
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

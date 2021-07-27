@@ -98,7 +98,6 @@ export const ErrorMessageContainer = styled.span`
 `;
 
 export const SuccessMessageContainer = styled.span`
-  margin: -0.5rem auto;
   margin: -0.5rem auto 1rem auto;
   color: #18938d;
   font-weight: bold;

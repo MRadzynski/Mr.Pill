@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { useAuth } from '../../contexts/AuthContext';
+
 import {
   SignInUpContainer,
   SignInUpTitle,
@@ -15,19 +17,35 @@ import {
 } from '../../components/signInUp/signInUp.styles';
 
 const PasswordReset = () => {
+  const { resetPassword } = useAuth()!;
+
   const [email, setEmail] = useState('');
-  const [isSuccess, setIsSuccess] = useState(true);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    try {
+        e.preventDefault();
+        setIsSuccess(false);
+        setIsError(false);
+        setErrorMessage('');
 
-    if (!email) return;
+      if (!email) return;
 
-    console.log('RESET');
+      await resetPassword(email);
+      setIsSuccess(true);
+    } catch (error) {
+        setIsError(true);
+        if(error.code === 'auth/user-not-found'){
+            setErrorMessage('There is no account at this email!');
+        }
+      console.log(error);
+    }
   };
 
   return (
@@ -37,15 +55,24 @@ const PasswordReset = () => {
         <img src='/assets/logo xl.png' alt='Pills' />
       </LogoContainer>
       <SignInUpForm onSubmit={handleSubmit}>
-      <SubTitle>Enter your email for instructions on resetting your password</SubTitle>
+        <SubTitle>
+          Enter your email for instructions on resetting your password
+        </SubTitle>
         <FormInput
           type='email'
           name='email'
           placeholder='Email'
           onChange={handleChange}
         />
-        {isSuccess ? <SuccessMessageContainer>The email with instructions has been sent!</SuccessMessageContainer> : null}
-        <ErrorMessageContainer></ErrorMessageContainer>
+        {isSuccess ? (
+          <SuccessMessageContainer>
+            The email with instructions has been sent!
+          </SuccessMessageContainer>
+        ) : null}
+        {isError ? (
+          <ErrorMessageContainer>{errorMessage}</ErrorMessageContainer>
+        ) : null}
+
         <CustomButton type='submit'>Reset Password</CustomButton>
       </SignInUpForm>
       <SubText>
