@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import logo from '../../assets/logo xl.png';
+
 import { signInWithGoogle } from '../../firebase/firebase.utils';
 
 import { useAuth } from '../../contexts/AuthContext';
@@ -43,7 +45,7 @@ const SignIn = () => {
     <SignInUpContainer>
       <SignInUpTitle>Mr.Pill</SignInUpTitle>
       <LogoContainer>
-        <img src="/assets/logo xl.png" alt="Pills" />
+        <img src={logo} alt="Pills" />
       </LogoContainer>
       <SignInUpForm onSubmit={handleSubmit}>
         <FormInput

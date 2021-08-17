@@ -7,6 +7,8 @@ import AuthProvider from './contexts/AuthContext';
 import SignIn from './pages/signIn/signIn.component';
 import SignUp from './pages/signUp/signUp.component';
 
+import Footer from './components/footer/footer.component';
+
 import GlobalStyle from './globalStyles';
 
 function App() {
@@ -15,14 +17,18 @@ function App() {
       <GlobalStyle />
       <Router>
         <AuthProvider>
-          <Switch>
+
+          {/* <Switch>
             <Route path="/signin">
               <SignIn />
             </Route>
             <Route path="/signup">
               <SignUp />
             </Route>
-          </Switch>
+          </Switch> */}
+
+          <Footer/>
+
         </AuthProvider>
       </Router>
     </>

@@ -16,6 +16,7 @@ export const SignInUpContainer = styled.div`
     '.     logo      .'
     '.     form      .'
     '.     footer    .';
+    background-color: var(--primary-color);
 `;
 
 export const SignInUpTitle = styled.h1`

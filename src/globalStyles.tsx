@@ -10,6 +10,8 @@ const GlobalStyle = createGlobalStyle`
     :root {
         --primary-color: #72d583;
         /* --primary-color: #66CC66; */
+        --white-shade: #f5f5f5;
+        --white-shade: #f0f0f0;
         --vh: ${vh}px;
     }
     
@@ -24,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
 
     body{
         background-color: var(--primary-color);
+        background-color: var(--white-shade);
     }
 
 `;

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import logo from '../../assets/logo xl.png';
+
 import { useAuth } from '../../contexts/AuthContext';
 
 import {
@@ -46,7 +48,7 @@ const SignUp = () => {
     <SignInUpContainer>
       <SignInUpTitle>Mr.Pill</SignInUpTitle>
       <LogoContainer>
-        <img src="/assets/logo xl.png" alt="Pills" />
+        <img src={logo} alt="Pills" />
       </LogoContainer>
       <SignInUpForm onSubmit={handleSubmit}>
         <FormInput
