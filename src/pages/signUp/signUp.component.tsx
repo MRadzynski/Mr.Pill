@@ -24,8 +24,8 @@ const SignUp = () => {
 
   const { signUp } = useAuth()!;
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
 
     setUserCredentials({ ...userCredentials, [name]: value });
   };
@@ -33,9 +33,9 @@ const SignUp = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const {email, password, confirmPassword} = userCredentials;
-    
-    if(password !== confirmPassword){
+    const { email, password, confirmPassword } = userCredentials;
+
+    if (password !== confirmPassword) {
       console.error(`Passwords don't match`);
     }
 
@@ -46,33 +46,33 @@ const SignUp = () => {
     <SignInUpContainer>
       <SignInUpTitle>Mr.Pill</SignInUpTitle>
       <LogoContainer>
-        <img src="/assets/logo xl.png" alt="Pills" />
+        <img src='/assets/logo xl.png' alt='Pills' />
       </LogoContainer>
       <SignInUpForm onSubmit={handleSubmit}>
         <FormInput
-          type="text"
-          name="displayName"
-          placeholder="Display Name (optional)"
+          type='text'
+          name='displayName'
+          placeholder='Display Name (optional)'
           onChange={handleChange}
         />
         <FormInput
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-          required
-        />
-        <FormInput
-          type="password"
-          name="password"
-          placeholder="Password"
+          type='email'
+          name='email'
+          placeholder='Email'
           onChange={handleChange}
           required
         />
         <FormInput
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
+          type='password'
+          name='password'
+          placeholder='Password'
+          onChange={handleChange}
+          required
+        />
+        <FormInput
+          type='password'
+          name='confirmPassword'
+          placeholder='Confirm Password'
           onChange={handleChange}
           required
         />
@@ -81,7 +81,7 @@ const SignUp = () => {
       </SignInUpForm>
       <SubText>
         Already have an account?
-        <SignInUpLink to="/signin">Sign In!</SignInUpLink>
+        <SignInUpLink to='/signin'>Sign In!</SignInUpLink>
       </SubText>
     </SignInUpContainer>
   );
